@@ -33,6 +33,7 @@ class AddFoodFragment : Fragment(R.layout.fragment_add_food) {
         savedInstanceState: Bundle?
     ): View? {
         this.binding = FragmentAddFoodBinding.inflate(inflater, container, false)
+
         foodListViewModel = activity?.run {
             ViewModelProvider(this).get(FoodListViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
@@ -55,7 +56,7 @@ class AddFoodFragment : Fragment(R.layout.fragment_add_food) {
 
         return this.binding.root
     }
-  
+
     private fun resetForm(binding: FragmentAddFoodBinding) {
         binding.etAddFoodDesc.setText("")
         binding.etAddFoodName.setText("")
