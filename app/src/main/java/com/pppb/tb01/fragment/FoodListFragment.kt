@@ -75,7 +75,7 @@ class FoodListFragment() : Fragment(R.layout.fragment_food_list) {
         this.foodListViewModel.getFoods().observe(viewLifecycleOwner, { foods ->
             this.adapter.update(foods)
 
-            if (foods.isEmpty() || foods.size < 8) {
+            if (foods.size < 8) {
                 //Remove Footer to listView
                 this.binding.lvListFood.removeFooterView(this.listViewFooter)
             }
@@ -153,10 +153,6 @@ class FoodListFragment() : Fragment(R.layout.fragment_food_list) {
             }
             //Then update it to adapter, but no need update existing array of food
             this.adapter.update(newFoodList)
-        }
-        //If no keyword, return back the listView items
-        else {
-            this.adapter.update(this.foods)
         }
     }
 }

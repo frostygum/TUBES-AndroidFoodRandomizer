@@ -70,9 +70,9 @@ class FoodListAdapter(context: Context, data: List<Food>, private val pageViewMo
             }
             //Set onClick listener when item delete button icon in the list was clicked
             this.binding.ibTrashFood.setOnClickListener {
-                Toast.makeText(this.view.context, "Delete ${this.foodListViewModel.getFoodAt(position)?.getName()}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this.view.context, "Delete ${this.foodListViewModel.getFoodAtId(food.getId())?.getName()}", Toast.LENGTH_SHORT).show()
                 //Delete food item from list
-                this.foodListViewModel.deleteFoodAt(position)
+                this.foodListViewModel.deleteFoodAtId(food.getId())
             }
         }
     }

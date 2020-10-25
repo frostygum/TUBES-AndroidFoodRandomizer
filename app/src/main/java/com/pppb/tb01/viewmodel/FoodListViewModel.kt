@@ -23,6 +23,18 @@ class FoodListViewModel(application: Application): AndroidViewModel(application)
 
     fun getFoodAt(index: Int) = this.foods.value?.get(index)
 
+    fun getFoodAtId(foodId: Int): Food {
+        var location = 0
+        //get index location for current id
+        for((i, it) in this.foodList.withIndex()){
+            if(it.getId() == foodId) {
+                location = i
+                break
+            }
+        }
+        return this.foodList[location]
+    }
+
     fun addFood(food: Food) {
         val newFood: Food = food
         newFood.setId(this.foodList.size + 1)
@@ -31,8 +43,16 @@ class FoodListViewModel(application: Application): AndroidViewModel(application)
         this.updateStorage()
     }
 
-    fun deleteFoodAt(indexToBeDeleted: Int) {
-        this.foodList.removeAt(indexToBeDeleted)
+    fun deleteFoodAtId(foodId: Int) {
+        var location = 0
+        //get index location for current id
+        for((i, it) in this.foodList.withIndex()){
+            if(it.getId() == foodId) {
+                location = i
+                break
+            }
+        }
+        this.foodList.removeAt(location)
         this.update()
         this.updateStorage()
     }
